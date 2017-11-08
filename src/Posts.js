@@ -19,10 +19,7 @@ class Posts extends Component {
     return (
       <div className="posts">
       {postsLength} posts <br/> 
-
-      <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={700} transitionLeaveTimeout={700}>
       {posts}
-      </ReactCSSTransitionGroup>
       </div>
     );
   }
