@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Loading from './Loading';
 
 class Posts extends Component {
@@ -13,14 +14,17 @@ class Posts extends Component {
       likes:{item.likes}<br />
       shares:{item.shares}<br />
       <img style={{width:300}} src={item.creator.photo} alt={item.creator.photo}/></div>
-    })
-    console.log(this.props)
+    }) 
     return (
-      <div className="App">
+      <div className="posts">
       {posts}
       </div>
     );
   }
 }
+
+Posts.propTypes = {
+  feed: PropTypes.array.isRequired
+};
 
 export default Posts;

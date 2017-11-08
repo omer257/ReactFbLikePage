@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Input from './Input';
 import Button from './Button';
 
@@ -19,14 +20,18 @@ class Form extends Component {
   render() {
     const {userData} = this.state;
     return (
-      <div className="App">
-      <form onSubmit={this.onSubmit}>
-      <Input id="userData" onChange={this.onChange} required={true} type="text" value={userData} placeholder="Please enter something" />
-      <Button type="submit" value="Add post"/>
-      </form>
+      <div className="form">
+        <form onSubmit={this.onSubmit}>
+          <Input id="userData" className="" onChange={this.onChange} required={true} type="text" value={userData} placeholder="Please enter something" />
+          <Button type="submit" className="" value="Add post"/>
+        </form>
       </div>
     );
   }
 }
+
+Form.propTypes = {
+  addItem: PropTypes.func.isRequired
+};
 
 export default Form;

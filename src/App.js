@@ -7,7 +7,7 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {profile:'',feed:''}
+    this.state = {profile:{},feed:[]}
     this.addItem = this.addItem.bind(this)
   }
 
@@ -39,8 +39,9 @@ class App extends Component {
   render() {
     const {profile,feed} = this.state;
     return (
-      <div className="App">
+      <div className="container">
         <Card profile={profile}/>
+        {/* <div className="flex_break"></div> */}
         <Form addItem={this.addItem}/>
         <Posts feed={feed}/>
       </div>
