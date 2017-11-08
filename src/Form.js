@@ -6,23 +6,24 @@ import Button from './Button';
 class Form extends Component {
   constructor(props){
     super(props)
-    this.state = {userData:''}
+    this.state = {postText:''}
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
   onSubmit(event){
     event.preventDefault();
-    this.props.addItem(this.state.userData);
+    this.props.addItem(this.state.postText);
+    this.setState({postText:''});
   }
   onChange(event){
     this.setState({[event.target.id]:event.target.value});
   }
   render() {
-    const {userData} = this.state;
+    const {postText} = this.state;
     return (
       <div className="form">
         <form onSubmit={this.onSubmit}>
-          <Input id="userData" className="" onChange={this.onChange} required={true} type="text" value={userData} placeholder="Please enter something" />
+          <Input id="postText" className="" onChange={this.onChange} required={true} type="text" value={postText} placeholder="Please enter something" />
           <Button type="submit" className="" value="Add post"/>
         </form>
       </div>

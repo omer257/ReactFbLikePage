@@ -8,6 +8,7 @@ class Posts extends Component {
     if (!feed) {
       return <Loading/>;
     }
+    var postsLength = feed.length;
     var posts = feed.map((item,index)=>{
       return <div key={index}>{item.text}{item.creator.name}<br/>
       comments:{item.comments}<br />
@@ -17,6 +18,7 @@ class Posts extends Component {
     }) 
     return (
       <div className="posts">
+      {postsLength} posts <br/> 
       {posts}
       </div>
     );
