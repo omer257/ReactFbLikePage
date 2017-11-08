@@ -21,7 +21,7 @@ class Card extends Component {
       return <li key={index}>{item}</li>
     })
     return (
-      <div className="card">
+      <div className="card border_shadow">
         <div>
           <img style={{width:300}} src={profile.photo} alt={profile.first_name}/>
         </div>

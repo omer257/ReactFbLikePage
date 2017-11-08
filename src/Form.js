@@ -19,12 +19,12 @@ class Form extends Component {
     this.setState({[event.target.id]:event.target.value});
   }
   render() {
-    const {postText} = this.state;
+    const {postText } = this.state;
     return (
       <div className="form">
         <form onSubmit={this.onSubmit}>
           <Input id="postText" className="" onChange={this.onChange} required={true} type="text" value={postText} placeholder="Please enter something" />
-          <Button type="submit" className="" value="Add post"/>
+          <Button type="submit" className="button" value="Add post"/>
         </form>
       </div>
     );
