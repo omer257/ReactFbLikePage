@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
 
-class Form extends Component {
-  constructor(props){
-    super(props)
-    this.state = {userData:''}
-  }
+class Input extends Component {
   render() {
+    const {value,type,placeholder,id,required,onChange}  = this.props;
     return (
-      <div className="App">
-      <form>
-      
-
-      </form>
-      </div>
+      <input required={required?'true':'false'} onChange={onChange} type={type} id={id} value={value} placeholder={placeholder} />
     );
   }
 }
 
-export default Form;
+export default Input;
