@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Input from './Input';
 import Button from './Button';
 
+
+
 class Form extends Component {
   constructor(props){
     super(props)
@@ -21,9 +23,9 @@ class Form extends Component {
   render() {
     const {postText } = this.state;
     return (
-      <div className="form">
+      <div className="form"> 
         <form onSubmit={this.onSubmit}>
-          <Input id="postText" className="" onChange={this.onChange} required={true} type="text" value={postText} placeholder="Please enter something" />
+          <Input id="postText" className="" onChange={this.onChange} required={true} type="text" value={postText} placeholder="Whats on your mind?" />
           <Button type="submit" className="button" value="Add post"/>
         </form>
       </div>

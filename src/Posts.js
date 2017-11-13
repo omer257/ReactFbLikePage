@@ -1,25 +1,54 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
+import Post from './Post';
+import FontAwesome from 'react-fontawesome';
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+
+const Fade = ({ children, ...props }) => (
+  <CSSTransition {...props} timeout={1000} classNames="fade">
+    {children}
+  </CSSTransition>
+);
 
 class Posts extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {fade:true}
+  }
+
+  componentDidMount () {
+		const elm = this.refs.button
+		elm.addEventListener('animationend', this.fadingDone)
+	}
+	componentWillUnmount () {
+  	const elm = this.refs.button
+		elm.removeEventListener('animationend', this.fadingDone)
+	}
+	fadingDone () {
+		this.setState({fade: false})
+	}
+
   render() {
-    const {feed} = this.props;
-    if (!feed) {
-      return <Loading/>;
-    }
-    var postsLength = feed.length;
-    var posts = feed.map((item,index)=>{
-      return <div key={index}>{item.text}{item.creator.name}<br/>
-      comments:{item.comments}<br />
-      likes:{item.likes}<br />
-      shares:{item.shares}<br />
-      <img style={{width:300}} src={item.creator.photo} alt={item.creator.photo}/></div>
-    }) 
+    const fade = this.state.fade;
+    const {feed} = this.props; 
+    var posts = feed.map((item, i) => (
+      <Fade key={item.text}>
+        <Post item={item}/>
+      </Fade>
+    ))
+    var postsLength = feed.length; 
     return (
-      <div className="posts">
-      {postsLength} posts <br/> 
-      {posts}
+      <div className="posts"> 
+      <div className='header' ref='button' 
+        onClick={() => this.setState({fade: !this.state.fade})}
+        >Add to feed <FontAwesome name='plus' /></div>
+      <div className={fade ? 'hide' : 'show'} >
+        {this.props.children}
+      </div>
+      <TransitionGroup>
+          {posts}
+        </TransitionGroup>
       </div>
     );
   }

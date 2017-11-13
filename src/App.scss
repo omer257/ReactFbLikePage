@@ -1,3 +1,34 @@
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+// Tablets and small desktops
+$screen-lg-min: 992px;
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+// Small devices
+@mixin sm {
+    @media (min-width: #{$screen-sm-min}) {
+        @content;
+    }
+} // Medium devices
+@mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
+} // Large devices
+@mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        @content;
+    }
+} // Extra large devices
+@mixin xl {
+    @media (min-width: #{$screen-xl-min}) {
+        @content;
+    }
+}
+
+
 /* 
 html5doctor.com Reset Stylesheet
 v1.6.1
@@ -5,110 +36,219 @@ Last Updated: 2010-09-17
 Author: Richard Clark - http://richclarkdesign.com 
 Twitter: @rich_clark
 */
+
+$btnColor:#4CAF50;
+$black:#000000;
+$grey:#efefef;
+$darkgrey:#cecece;
+$white:#ffffff;
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
-    margin:0;
-    padding:0;
-    border:0;
-    outline:0;
-    font-size:100%;
-    vertical-align:baseline;
-    background:transparent;
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
 }
 
 body {
-    line-height:1;
-    font-family: 'Montserrat', sans-serif;    
-    background-color:#efefef;
+    line-height: 1;
+    font-family: 'Montserrat', sans-serif;
+    background-color: $grey;
 }
 
-article,aside,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section { 
-    display:block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
 }
 
 nav ul {
-    list-style:none;
+    list-style: none;
 }
 
-blockquote, q {
-    quotes:none;
+blockquote,
+q {
+    quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content:'';
-    content:none;
+blockquote {
+    &:before,
+    &:after {
+        content: '';
+        content: none;
+    }
+}
+
+q {
+    &:before,
+    &:after {
+        content: '';
+        content: none;
+    }
 }
 
 a {
-    margin:0;
-    padding:0;
-    font-size:100%;
-    vertical-align:baseline;
-    background:transparent;
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
 }
 
+
 /* change colours to suit your needs */
+
 ins {
-    background-color:#ff9;
-    color:#000;
-    text-decoration:none;
+    background-color: $grey;
+    color: $black;
+    text-decoration: none;
 }
 
-/* change colours to suit your needs */
 mark {
-    background-color:#ff9;
-    color:#000; 
-    font-style:italic;
-    font-weight:bold;
+    background-color: $grey;
+    color: $black;
+    font-style: italic;
+    font-weight: bold;
 }
 
 del {
     text-decoration: line-through;
 }
 
-abbr[title], dfn[title] {
-    border-bottom:1px dotted;
-    cursor:help;
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
 }
 
 table {
-    border-collapse:collapse;
-    border-spacing:0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
+
 
 /* change border colour to suit your needs */
+
 hr {
-    display:block;
-    height:1px;
-    border:0;   
-    border-top:1px solid #cccccc;
-    margin:1em 0;
-    padding:0;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
 }
 
-input, select {
-    vertical-align:middle;
+input,
+select {
+    vertical-align: middle;
 }
 
-.ul{list-style: none;}
-*{
-  box-sizing:border-box;
+
+* {
+    box-sizing: border-box;
+}
+/*End of reset*/
+
+
+
+
+
+
+.container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-input[type=text], select {
+.flex{
+    
+}
+.flexwrap{
+    
+}
+
+input[type=text],
+select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -120,8 +260,8 @@ input[type=text], select {
 
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
-    color: white;
+    background-color: $btnColor;
+    color: $white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -130,53 +270,254 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: darken($btnColor, 20);
 }
+
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: $btnColor;
     border: none;
-    color: white;
+    color: $white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-}
-.container{
-  width:90%;
-  margin:auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+    width: 100%;
 }
 
-.border_shadow{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    
-}
-.card{
-  width:100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: fit-content;
-}
-.card div:nth-child(2) {
-  background: red;
-  height: 98%;
+.round {
+    border-radius: 15px;
 }
 
-.form{
-  width:100%;
+.border_shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.posts{
-  width:100%;
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: $white;
+    @include sm {
+        width: 100%; 
+    }
+    @include md {
+        display: block;
+        width: 40%;
+    }
+    @include lg {
+        display: block;
+        width: 40%; 
+    }
+    @include xl {
+        display: block;  
+        width: 30%;
+    }
 }
 
-.post{
- 
+.card .image,
+.card .content {
+    width: 100%;
+    padding: 10px 10px 0px 10px;
+    @include sm {
+        width: 50%;
+    }
+    @include md {
+        width: 100%;
+    }
+    @include lg {
+        width: 100%;
+    }
+    h1 {
+        display: inline
+    }
 }
 
-.flex_break{
-  width:100%;
+.card div img {
+    margin-left: 33%;
+    width: 33%;
+    border: 3px solid $grey;
+    padding: 7px;
+    
+    @include sm {
+    width: 100%;
+    border: 3px solid $grey;
+    padding: 7px;
+    margin-left: auto;
+    }
+}
+
+.card .content div {
+    padding-top: 7px;
+}
+
+.card .Interests,
+.card .Groups {
+    float: left;
+    width: 50%;
+    @include sm {
+        float: left;
+    }
+    @include md {
+        width: 100%;
+        float: left;
+    }
+    @include lg {
+        width: 50%;
+        float: left;
+    }
+}
+
+.card .Interests:after,
+.card .Groups:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.form {
+    width: 100%;
+    padding-bottom: 13px;
+}
+
+.posts {
+    background-color: $white;
+    width: 100%;
+    padding: 13px;
+    @include sm {
+        width: 100%;
+    }
+    @include md {
+        width: 60%;
+    }
+    @include lg {
+        width: 60%;
+    }
+    @include xl {
+        width: 70%;
+    }
+}
+.posts .header{
+    background-color: $grey;
+    padding: 7px;
+    margin-bottom: 10px;border: 1px solid darkgray;
+}
+
+.post {
+    height: auto;
+    overflow: hidden;
+    border: 1px solid $grey;
+    margin-bottom: 13px;
+    padding: 10px;
+    position: relative;
+    .footer {
+        list-style-type: none; // display: inline;
+        li {
+            padding-right: 10px;
+            display: inline;
+        }
+        li img {
+            height: 100px
+        }
+    }
+}
+
+//Animations
+.fade-enter {
+    opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+    opacity: 0.01;
+    transition: opacity 800ms ease-in;
+}
+
+.expandBtn {
+    display: block;
+    float: right;
+    margin-top: 0px !important;
+    after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    @include sm {
+        display: none;
+    }
+}
+
+.hide {
+    overflow: hidden;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    -moz-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+    @include sm {
+        max-height: 1000px;
+    }
+}
+.show {
+    -moz-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -moz-transition-timing-function: ease-in;
+    -webkit-transition-timing-function: ease-in;
+    -o-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+    max-height: 1000px;
+    overflow: hidden;
+}
+.open {
+    animation: fade-in-keyframes 1s;
+    display: block;
+}
+
+@keyframes fade-in-keyframes {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+.fadein, .fadeout {
+    opacity: 0;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+}
+.fadein {
+    opacity: 1;
+}
+
+.img {
+    position: relative;
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+    border-radius: 50%;
 }

@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import Card from './Card';
 import Posts from './Posts';
 import Form from './Form';
+import Header from './Header';
+import Loading from './Loading';
+
 import './App.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 
 class App extends Component {
   constructor(props){
@@ -36,14 +40,18 @@ class App extends Component {
       feed: [...prevState.feed, newObject]
     }))
   }
+  
   render() {
     const {profile,feed} = this.state;
+    if (!profile.first_name) {
+      return <Loading ref='button'/>;
+    }
     return (
-      <div className="container">
+      <div className="container flex flexwrapper border_shadow">
         <Card profile={profile}/>
-        {/* <div className="flex_break"></div> */}
-        <Form addItem={this.addItem}/>
-        <Posts feed={feed}/>
+        <Posts feed={feed}>
+          <Form addItem={this.addItem}/>
+        </Posts>
       </div>
     );
   }
