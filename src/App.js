@@ -4,6 +4,7 @@ import Posts from './Posts';
 import Form from './Form';
 import Header from './Header';
 import Loading from './Loading';
+import 'reset-css/reset.css';
 
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'; 
@@ -47,7 +48,7 @@ class App extends Component {
       return <Loading ref='button'/>;
     }
     return (
-      <div className="container flex flexwrapper border_shadow">
+      <div className="container flex flexwrap border_shadow">
         <Card profile={profile}/>
         <Posts feed={feed}>
           <Form addItem={this.addItem}/>

@@ -13,7 +13,8 @@
     "react-materialize": "^1.0.16",
     "react-scripts": "1.0.16",
     "react-scroll": "^1.6.4",
-    "react-transition-group": "^2.2.1"
+    "react-transition-group": "^2.2.1",
+    "reset-css": "^2.2.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",

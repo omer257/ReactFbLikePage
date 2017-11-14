@@ -27,15 +27,12 @@ $screen-xl-min: 1200px;
         @content;
     }
 }
+@mixin clear-after() {
+    content: '';
+    display: block;
+    clear: both;
+}
 
-
-/* 
-html5doctor.com Reset Stylesheet
-v1.6.1
-Last Updated: 2010-09-17
-Author: Richard Clark - http://richclarkdesign.com 
-Twitter: @rich_clark
-*/
 
 $btnColor:#4CAF50;
 $black:#000000;
@@ -43,82 +40,10 @@ $grey:#efefef;
 $darkgrey:#cecece;
 $white:#ffffff;
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-strong,
-sub,
-sup,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
+
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -127,124 +52,16 @@ body {
     background-color: $grey;
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-    display: block;
-}
-
-nav ul {
-    list-style: none;
-}
-
-blockquote,
-q {
-    quotes: none;
-}
-
-blockquote {
-    &:before,
-    &:after {
-        content: '';
-        content: none;
-    }
-}
-
-q {
-    &:before,
-    &:after {
-        content: '';
-        content: none;
-    }
-}
-
-a {
-    margin: 0;
-    padding: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-}
-
-
-/* change colours to suit your needs */
-
-ins {
-    background-color: $grey;
-    color: $black;
-    text-decoration: none;
-}
-
-mark {
-    background-color: $grey;
-    color: $black;
-    font-style: italic;
-    font-weight: bold;
-}
-
-del {
-    text-decoration: line-through;
-}
-
-abbr[title],
-dfn[title] {
-    border-bottom: 1px dotted;
-    cursor: help;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-
-/* change border colour to suit your needs */
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #cccccc;
-    margin: 1em 0;
-    padding: 0;
-}
-
-input,
-select {
-    vertical-align: middle;
-}
-
-
-* {
-    box-sizing: border-box;
-}
-/*End of reset*/
-
-
-
-
-
-
 .container {
     width: 90%;
     margin: auto;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .flex{
-    
+    display: flex;
 }
 .flexwrap{
-    
+    flex-wrap: wrap;
 }
 
 input[type=text],
@@ -277,7 +94,7 @@ input[type=submit]:hover {
     background-color: $btnColor;
     border: none;
     color: $white;
-    padding: 15px 32px;
+    padding: 12px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -285,17 +102,11 @@ input[type=submit]:hover {
     width: 100%;
 }
 
-.round {
-    border-radius: 15px;
-}
-
 .border_shadow {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card {
-    display: flex;
-    flex-wrap: wrap;
     width: 100%;
     background-color: $white;
     @include sm {
@@ -329,13 +140,14 @@ input[type=submit]:hover {
         width: 100%;
     }
     h1 {
-        display: inline
+        display: inline;
+        font-size: 3vmin;
     }
 }
 
 .card div img {
-    margin-left: 33%;
-    width: 33%;
+    margin-left: 25%;
+    width: 50%;
     border: 3px solid $grey;
     padding: 7px;
     
@@ -368,11 +180,12 @@ input[type=submit]:hover {
     }
 }
 
+
+   
+
 .card .Interests:after,
 .card .Groups:after {
-    content: '';
-    display: block;
-    clear: both;
+    @include clear-after();
 }
 
 .form {
@@ -446,9 +259,7 @@ input[type=submit]:hover {
     float: right;
     margin-top: 0px !important;
     after {
-        content: '';
-        display: block;
-        clear: both;
+        @include clear-after();
     }
     @include sm {
         display: none;

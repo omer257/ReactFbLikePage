@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Loading from './Loading';
 import Post from './Post';
 import FontAwesome from 'react-fontawesome';
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
@@ -37,7 +36,6 @@ class Posts extends Component {
         <Post item={item}/>
       </Fade>
     ))
-    var postsLength = feed.length; 
     return (
       <div className="posts"> 
       <div className='header' ref='button' 
