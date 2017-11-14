@@ -33,14 +33,47 @@ $screen-xl-min: 1200px;
     clear: both;
 }
 
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+  }
+  
+  @mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+  
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+      & {
+        font-size: $min-font-size;
+        @media screen and (min-width: $min-vw) {
+            font-weight:200;
+          font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        }
+        @media screen and (min-width: $max-vw) {
+            font-weight:200;
+          font-size: $max-font-size;
+        }
+      }
+    }
+  }
+
+  $min_width: 320px;
+  $max_width: 1200px;
+  $min_font: 13px;
+  $max_font: 22px;
+  
+  html {
+    @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  }
 
 $btnColor:#4CAF50;
 $black:#000000;
 $grey:#efefef;
 $darkgrey:#cecece;
 $white:#ffffff;
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,400');
+strong {font-weight:400;}
 
 * {
     box-sizing: border-box;
@@ -97,8 +130,7 @@ input[type=submit]:hover {
     padding: 12px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    display: inline-block; 
     width: 100%;
 }
 
@@ -106,6 +138,10 @@ input[type=submit]:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.img-valign {
+    vertical-align: middle;
+    margin-bottom: 0.75em;
+  }
 .card {
     width: 100%;
     background-color: $white;
@@ -141,7 +177,7 @@ input[type=submit]:hover {
     }
     h1 {
         display: inline;
-        font-size: 3vmin;
+        font-size: 200%;
     }
 }
 
@@ -214,6 +250,7 @@ input[type=submit]:hover {
     background-color: $grey;
     padding: 7px;
     margin-bottom: 10px;border: 1px solid darkgray;
+    text-align: center;
 }
 
 .post {
@@ -232,6 +269,9 @@ input[type=submit]:hover {
         li img {
             height: 100px
         }
+    }
+    .userName{
+        padding-top: 7px;
     }
 }
 
@@ -325,10 +365,21 @@ input[type=submit]:hover {
 
 .img {
     position: relative;
-    width:  100px;
-    height: 100px;
+    width:  30px;
+    height: 30px;
     background-position: 50% 50%;
     background-repeat:   no-repeat;
     background-size:     cover;
     border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+
+    @include sm {
+        width:  45px;
+        height: 45px;
+    }
+    @include md {
+        width:  60px;
+        height: 60px;
+    }
 }

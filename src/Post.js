@@ -7,12 +7,12 @@ class Post extends Component {
     var {item} = this.props;
     return (
       <div className="post border_shadow">
-      {item.text} - <em>{item.creator.name}</em>
-      
-      <div className="img hide" style={{backgroundImage: "url(" + item.creator.photo + ")"}}></div>
-      
-      
-      <ul className="footer hide">
+      <div className="img img-valign" style={{backgroundImage: "url(" + item.creator.photo + ")"}}></div>
+      {item.creator.name} <em></em>
+
+      <div className="userName"><strong>{item.text}</strong></div>
+      <ul className="footer">
+      <br/>
         <li>likes ({item.likes}) <FontAwesome name='like' /></li>
         <li>comments ({item.comments}) <FontAwesome name='comment' /></li>
         <li>Shares ({item.shares}) <FontAwesome name='share' /></li>

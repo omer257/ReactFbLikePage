@@ -26,23 +26,21 @@ class Card extends Component {
       return <li key={index}>{itemData}</li>
     })
   }
-  mapBanners(item){
-    return item.map((item,index)=>{
-      return <div key={index} style={{backgroundImage: `url(${item.photo})`}}>{item.text}</div>
-    })
-  }
+  // mapBanners(item){
+  //   return item.map((item,index)=>{
+  //     return <div key={index} style={{backgroundImage: `url(${item.photo})`}}>{item.text}</div>
+  //   })
+  // }
   render() { 
     const {profile} = this.props;
     const {fade} = this.state
     
-    var bannersDisplay = this.mapBanners(profile.banners)
+    // var bannersDisplay = this.mapBanners(profile.banners) /// 
     var groupsDisplay = this.mapProps(profile.groups)
     var interestsDisplay = this.mapProps(profile.interests)
     return (
       <div className="card flex flexwrap"> 
         <div className="image">
-        {/* <div className="img" style={{backgroundImage: "url(" + profile.photo + ")"}}></div> */}
-
           <img src={profile.photo} alt={profile.first_name}/>
         </div>
         <div className="content">
@@ -51,16 +49,16 @@ class Card extends Component {
           <FontAwesome name={fade ? 'minus' : 'plus'} /> {fade ? 'Less' : 'More'} details 
           </span>
           <div className={fade ? 'floatLeft show' : 'floatLeft hide'}>
-              <b>Location: </b>{profile.location.country} - {profile.location.city}
+              <strong>Location: </strong>{profile.location.country} - {profile.location.city}
           </div>
           <div className={fade ? 'show' : 'hide'}>
-             <b>Age: </b>{profile.age}
+             <strong>Age: </strong>{profile.age}
           </div>
           <div className={fade ? 'Interests show' : 'Interests hide'}>
-             <b>Interests: </b><ul className="ul">{interestsDisplay}</ul>
+             <strong>Interests: </strong><ul className="ul">{interestsDisplay}</ul>
           </div>
           <div className={fade ? 'Groups show' : 'Groups hide'}>
-             <b>Groups: </b><ul className="ul">{groupsDisplay}</ul>
+             <strong>Groups: </strong><ul className="ul">{groupsDisplay}</ul>
           </div>  
         </div>
       </div>

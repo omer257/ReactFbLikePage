@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import Card from './Card';
 import Posts from './Posts';
 import Form from './Form';
-import Header from './Header';
 import Loading from './Loading';
 import 'reset-css/reset.css';
-
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Post from './Post';
 import FontAwesome from 'react-fontawesome';
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import scrollToComponent from 'react-scroll-to-component';
+
 
 const Fade = ({ children, ...props }) => (
   <CSSTransition {...props} timeout={1000} classNames="fade">
@@ -28,25 +30,31 @@ class Posts extends Component {
 		this.setState({fade: false})
 	}
 
+  componentWillReceiveProps(nextProps){
+    scrollToComponent(this.refs.bottom);
+  }
   render() {
     const fade = this.state.fade;
     const {feed} = this.props; 
     var posts = feed.map((item, i) => (
       <Fade key={item.text}>
-        <Post item={item}/>
+        <Post item={item} ref={item}/>
       </Fade>
     ))
     return (
       <div className="posts"> 
       <div className='header' ref='button' 
-        onClick={() => this.setState({fade: !this.state.fade})}
-        >Add to feed <FontAwesome name='plus' /></div>
+        onClick={this.fakeit}
+        >Add a post 
+        {/* <FontAwesome className="hide" name='plus' /> */}
+        </div>
       <div className={fade ? 'hide' : 'show'} >
         {this.props.children}
       </div>
       <TransitionGroup>
           {posts}
-        </TransitionGroup>
+        </TransitionGroup><br/>
+        <div ref="bottom"></div>
       </div>
     );
   }
