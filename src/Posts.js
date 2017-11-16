@@ -43,10 +43,8 @@ class Posts extends Component {
     ))
     return (
       <div className="posts"> 
-      <div className='header' ref='button' 
-        onClick={this.fakeit}
-        >Add a post 
-        {/* <FontAwesome className="hide" name='plus' /> */}
+      <div className='header' ref='button'  onClick={() => this.setState({fade: !this.state.fade})}
+        >User feed  <FontAwesome className="hide" name='plus' />
         </div>
       <div className={fade ? 'hide' : 'show'} >
         {this.props.children}
